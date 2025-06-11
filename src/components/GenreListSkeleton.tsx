@@ -1,6 +1,6 @@
 import { HStack, List, ListItem, Skeleton } from "@chakra-ui/react";
 
-const GameListSkeleton = () => {
+const GenreListSkeleton = () => {
   const listItems = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
   return (
     <List>
@@ -16,4 +16,4 @@ const GameListSkeleton = () => {
   );
 };
 
-export default GameListSkeleton;
+export default GenreListSkeleton;

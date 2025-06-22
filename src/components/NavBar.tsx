@@ -2,7 +2,7 @@ import { HStack, Image, Text } from "@chakra-ui/react";
 import logo from "../assets/logo.webp";
 import ColorModeSwitch from "./ColorModeSwitch.tsx";
 import SearchInput from "./SearchInput.tsx";
-import { form } from "framer-motion/client";
+
 interface Props {
   OnSearch: (searchText: string) => void;
 }

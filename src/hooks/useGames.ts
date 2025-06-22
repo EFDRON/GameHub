@@ -1,6 +1,5 @@
 import type { GameQuery } from "../App";
 import useData from "./useData";
-import type { Genre } from "./useGenre";
 import type { Platform } from "./usePlatform";
 
 export interface Game {

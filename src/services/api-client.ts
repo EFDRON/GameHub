@@ -1,4 +1,3 @@
-import { useQuery } from "@tanstack/react-query";
 import axios, { type AxiosRequestConfig } from "axios";
 export interface FetchResponse<T> {
   count: number;

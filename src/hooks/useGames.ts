@@ -3,7 +3,7 @@ import type { GameQuery } from "../App";
 
 import type { Platform } from "./usePlatform";
 
-import apiClient, { type FetchResponse } from "../services/api-client";
+import APIClient, { type FetchResponse } from "../services/api-client";
 
 export interface Game {
   id: number;
@@ -15,21 +15,19 @@ export interface Game {
 }
 
 const useGames = (gameQuery: GameQuery) => {
+  const api = new APIClient<Game>("/games");
   return useQuery({
     queryKey: ["games", gameQuery],
     queryFn: () => {
-      return apiClient
-        .get<FetchResponse<Game>>("/games", {
-          params: {
-            genres: gameQuery.genre?.id,
-            parent_platforms: gameQuery.platform?.id,
-            ordering: gameQuery.sortOrder,
-            search: gameQuery.searchText,
-          },
-        })
-        .then((res) => res.data);
+      return api.getAll({
+        params: {
+          genres: gameQuery.genre?.id,
+          parent_platforms: gameQuery.platform?.id,
+          ordering: gameQuery.sortOrder,
+          search: gameQuery.searchText,
+        },
+      });
     },
   });
 };
-
 export default useGames;

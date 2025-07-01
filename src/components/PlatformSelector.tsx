@@ -1,7 +1,8 @@
 import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import { BsChevronDown } from "react-icons/bs";
 import usePlatform, { type Platform } from "../hooks/usePlatform";
-import platforms from "../data/platforms";
+
+import useLookUP from "../hooks/useLookUp";
 interface Props {
   selectedPlatform: number | null;
   handlePlatformSelect: (platfrom: Platform) => void;
@@ -18,7 +19,7 @@ const PlatformSelector = ({
     <Menu>
       <MenuButton as={Button} rightIcon={<BsChevronDown />}>
         {selectedPlatform
-          ? platforms.find((item) => item.id === selectedPlatform)?.name
+          ? useLookUP(selectedPlatform, "platform")
           : "Platform"}
       </MenuButton>
       <MenuList>

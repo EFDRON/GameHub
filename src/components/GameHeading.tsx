@@ -1,7 +1,6 @@
 import { Heading } from "@chakra-ui/react";
 import type { GameQuery } from "../App";
-import platforms from "../data/platforms";
-import genres from "../data/genres";
+import useLookUP from "../hooks/useLookUp";
 interface Props {
   gameQuery: GameQuery;
 }
@@ -9,13 +8,8 @@ interface Props {
 const GameHeading = ({ gameQuery }: Props) => {
   return (
     <Heading as="h1" marginBottom={4}>
-      {gameQuery.platform
-        ? platforms.find((item) => item.id === gameQuery.platform)?.name
-        : ""}{" "}
-      {gameQuery.genre
-        ? genres.find((item) => item.id === gameQuery.genre)?.name
-        : ""}{" "}
-      Games
+      {gameQuery.platform ? useLookUP(gameQuery.platform, "platform") : ""}{" "}
+      {gameQuery.genre ? useLookUP(gameQuery.genre, "genre") : ""} Games
     </Heading>
   );
 };

@@ -1,11 +1,10 @@
 import { Heading } from "@chakra-ui/react";
-import type { GameQuery } from "../App";
 import useLookUP from "../hooks/useLookUp";
-interface Props {
-  gameQuery: GameQuery;
-}
+import useGameQueryStore from "../store";
 
-const GameHeading = ({ gameQuery }: Props) => {
+const GameHeading = () => {
+  const gameQuery = useGameQueryStore((s) => s.gameQuery);
+
   return (
     <Heading as="h1" marginBottom={4}>
       {gameQuery.platform ? useLookUP(gameQuery.platform, "platform") : ""}{" "}
